@@ -7,7 +7,7 @@
         <title>ALog</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-<!--        <link rel="stylesheet" type="text/css" href="styling.css">-->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     
     <body>
@@ -23,14 +23,16 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Audio Log</a>
                         </div>
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li class="active">
-                                    <a href="#" ng-click="ShowWel()">Home</a>
+                                <li id="navPageALog" class="active">
+                                    <a href="#" ng-click="ShowALog()" class="navbar-brand">Audio Log</a>
                                 </li>
-                                <li>
+                                <li id="navPageAbout">
+                                    <a href="#" ng-click="ShowAbout()">About</a>
+                                </li>
+                                <li id="navPageLog">
                                     <a href="#" ng-click="ShowLog()">Logs</a>
                                 </li>
                             </ul>
@@ -40,11 +42,14 @@
                 </nav>
                 <br></br>
                 <br></br>
-                <div ng-hide="hidingWel" class="ng-hide">
+                <div ng-hide="hidingALog" class="ng-hide">
                     <h1>Welcome to the Voice Recognition System Audio Logger</h1>
                 </div>
+                <div ng-hide="hidingAbout" class="ng-hide">
+                    <h1>Stephen Cross</h1>
+                </div>
                 <div class="table-responsive ng-hide" ng-hide="hidingLog">
-                    <table st-table="displayFiles" st-safe-src="safeFiles" class="table">
+                    <table st-table="displayFiles" st-safe-src="safeFiles" class="table-striped">
                         <thead>
                             <tr>
                                 <th colspan="3">

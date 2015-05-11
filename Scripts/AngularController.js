@@ -21,16 +21,36 @@ app.controller('Ctrl', function ($scope, $http) {
     $scope.itemsByPage= 4;
     $scope.numPages = $scope.displayFiles/$scope.itemsByPage;
     
+    $scope.hidingALog = false;
+    $scope.hidingAbout = true;
     $scope.hidingLog = true;
-    $scope.hidingWel = false;
+    $scope.ShowALog = function()
+    {
+        $scope.hidingALog = false;
+        $scope.hidingAbout = true;
+        $scope.hidingLog = true;
+        $("#navPageALog").addClass("active");
+        $("#navPageAbout").removeClass("active");
+        $("#navPageLog").removeClass("active");                        
+    };
+    
+    $scope.ShowAbout = function () 
+    {
+        $scope.hidingALog = true;
+        $scope.hidingAbout = false;
+        $scope.hidingLog = true;
+        $("#navPageALog").removeClass("active");
+        $("#navPageAbout").addClass("active");
+        $("#navPageLog").removeClass("active"); 
+    };
+    
     $scope.ShowLog = function () 
     {
+        $scope.hidingALog = true;
+        $scope.hidingAbout = true;
         $scope.hidingLog = false;
-        $scope.hidingWel = true;
-    };
-    $scope.ShowWel = function () 
-    {
-        $scope.hidingWel = false;
-        $scope.hidingLog = true;
+        $("#navPageALog").removeClass("active");
+        $("#navPageAbout").removeClass("active");
+        $("#navPageLog").addClass("active"); 
     };
 });
