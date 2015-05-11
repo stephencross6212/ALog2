@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    
+    <head>
+        <title>ALog</title>
+        <link rel="stylesheet" type="text/css" href="styling.css">
+    </head>
+    
+    <body>
+        <div ng-app="ALog" ng-controller="Ctrl">
+            <div>
+                <label>Search:</label>
+                <input ng-model="filterBy"></input>
+            </div>
+            <div>
+                <table st-table="displayFiles" st-safe-src="safeFiles">
+                    <thead>
+                        <tr>
+                            <th st-sort="caseId">Case Id</th>
+                            <th st-sort="audio">Audio</th>
+                            <th st-sort="custName">CustName</th>
+                            <th st-sort="csr">CSR</th>
+                            <th>Play</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in displayFiles | filter:filterBy">
+                            <td>{{row.caseId}}</td>
+                            <td>{{row.audio | uppercase}}</td>
+                            <td>{{row.custName}}</td>
+                            <td>{{row.csr}}</td>
+                            <td>
+                                <audio controls="controls" preload="metadata">
+                                    <source src={{Source(row.audio)}} type="audio/mp3"></source>
+                                </audio>
+                            </td>
+                            <td>
+                                <a href="#" ng-click=download(row.audio)>Download</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="Scripts/smart-table.js"></script>
+        <script src="Scripts/AngularController.js"></script>
+    </body>
+
+</html>
