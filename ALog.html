@@ -2,50 +2,96 @@
 <html lang="en-US">
     
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ALog</title>
-        <link rel="stylesheet" type="text/css" href="styling.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<!--        <link rel="stylesheet" type="text/css" href="styling.css">-->
     </head>
     
     <body>
-        <div ng-app="ALog" ng-controller="Ctrl">
-            <div>
-                <label>Search:</label>
-                <input ng-model="filterBy"></input>
+        <div class="container">
+            <div ng-app="ALog" ng-controller="Ctrl">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                            aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Audio Log</a>
+                        </div>
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="#" ng-click="ShowWel()">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#" ng-click="ShowLog()">Logs</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </nav>
+                <br></br>
+                <br></br>
+                <div ng-hide="hidingWel" class="ng-hide">
+                    <h1>Welcome to the Voice Recognition System Audio Logger</h1>
+                </div>
+                <div class="table-responsive ng-hide" ng-hide="hidingLog">
+                    <table st-table="displayFiles" st-safe-src="safeFiles" class="table">
+                        <thead>
+                            <tr>
+                                <th colspan="3">
+                                    <input st-search="" placeholder="Search" class="input-sm form-control" type="search"></input>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th st-sort="caseId">Case Id</th>
+                                <th st-sort="audio">Audio</th>
+                                <th st-sort="custName">CustName</th>
+                                <th st-sort="csr">CSR</th>
+                                <th>Play</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in displayFiles">
+                                <td>{{row.caseId}}</td>
+                                <td>{{row.audio | uppercase}}</td>
+                                <td>{{row.custName}}</td>
+                                <td>{{row.csr}}</td>
+                                <td>
+                                    <audio controls="controls" preload="metadata">
+                                        <source src={{Source(row.audio)}} type="audio/mp3"></source>
+                                    </audio>
+                                </td>
+                                <td>
+                                    <a href="#" ng-click=download(row.audio)>Download</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="numPages"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-            <div>
-                <table st-table="displayFiles" st-safe-src="safeFiles">
-                    <thead>
-                        <tr>
-                            <th st-sort="caseId">Case Id</th>
-                            <th st-sort="audio">Audio</th>
-                            <th st-sort="custName">CustName</th>
-                            <th st-sort="csr">CSR</th>
-                            <th>Play</th>
-                            <th>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="row in displayFiles | filter:filterBy">
-                            <td>{{row.caseId}}</td>
-                            <td>{{row.audio | uppercase}}</td>
-                            <td>{{row.custName}}</td>
-                            <td>{{row.csr}}</td>
-                            <td>
-                                <audio controls="controls" preload="metadata">
-                                    <source src={{Source(row.audio)}} type="audio/mp3"></source>
-                                </audio>
-                            </td>
-                            <td>
-                                <a href="#" ng-click=download(row.audio)>Download</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>            
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+            <script src="Scripts/smart-table.js"></script>
+            <script src="Scripts/AngularController.js"></script>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-        <script src="Scripts/smart-table.js"></script>
-        <script src="Scripts/AngularController.js"></script>
     </body>
 
 </html>

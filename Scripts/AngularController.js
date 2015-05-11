@@ -17,4 +17,20 @@ app.controller('Ctrl', function ($scope, $http) {
     {
        window.open("Audio/" + path + ".mp3", '_blank', ''); 
     };
+    
+    $scope.itemsByPage= 4;
+    $scope.numPages = $scope.displayFiles/$scope.itemsByPage;
+    
+    $scope.hidingLog = true;
+    $scope.hidingWel = false;
+    $scope.ShowLog = function () 
+    {
+        $scope.hidingLog = false;
+        $scope.hidingWel = true;
+    };
+    $scope.ShowWel = function () 
+    {
+        $scope.hidingWel = false;
+        $scope.hidingLog = true;
+    };
 });
