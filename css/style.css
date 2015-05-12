@@ -27,14 +27,16 @@ tbody tr:hover
 td
 {
 	padding: 10px;
+	border: 1px #364f86;
+	border-collapse: collapse;
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover 
 {
     z-index: 2;
-    color: #15314a;
+    color: white;
     cursor: default;
-    background-color: #858185;
+    background-color: black;
     border-color: #337AB7;
 }
 

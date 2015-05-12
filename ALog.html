@@ -46,7 +46,23 @@
                     <h1>Welcome to the Voice Recognition System Audio Logger</h1>
                 </div>
                 <div ng-hide="hidingAbout" class="ng-hide">
-                    <h1>Stephen Cross</h1>
+                    <h1>Description</h1>
+                    <p>This project is a web application that works with voice recognizer software. The software captures customer complaints recorded
+                        when the customer gives feedback and response for the customer support executive's call. All of the files can be searched
+                        and filtered by using the textbox. The system allowed users to access audio samples by via the page and via download.</p>
+                    <h1>Technologies used:</h1>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>JQuery</li>
+                        <li>AngularJS</li>
+                        <li>Bootstrap</li>
+                        <li>Smart-Table</li>
+                        <li>AJAX</li>
+                        <li>JSON</li>
+                    </ul>
+                    <h1>Created by: Stephen Cross</h1>
                 </div>
                 <div class="table-responsive ng-hide" ng-hide="hidingLog">
                     <table st-table="displayFiles" st-safe-src="safeFiles" class="table-striped">
@@ -78,7 +94,7 @@
                                 </td>
                                 <td>
                                     <a href="#" ng-click=download(row.audio)>Download</a>
-                                </td>
+                                </td>                                
                             </tr>
                         </tbody>
                         <tfoot>
@@ -91,7 +107,7 @@
                     </table>
                 </div>
             </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
             <script src="Scripts/smart-table.js"></script>
