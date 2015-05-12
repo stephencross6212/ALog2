@@ -53,4 +53,8 @@ app.controller('Ctrl', function ($scope, $http) {
         $("#navPageAbout").removeClass("active");
         $("#navPageLog").addClass("active"); 
     };
+    
+    $scope.showDescription = false;
+    $scope.showTech = false;
+    $scope.showCreator = false;
 });

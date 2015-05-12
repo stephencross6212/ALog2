@@ -44,14 +44,58 @@
                 <br></br>
                 <div ng-hide="hidingALog" class="ng-hide">
                     <h1>Welcome to the Voice Recognition System Audio Logger</h1>
+                    <p>This application allows for quick and easy mangement of the Voice Recognition System's audio files via a search box. Just
+                        type in what you are looking for, antything from the Case Id Number to who took the call, and the results will be listed
+                        below. Here is a detailed explanation of the information that is given to you.</p>
+                    <table class="table-responsive">
+                        <thead>
+                            <tr>
+                                <th colspan="3">
+                                    <textarea placeholder="Search" readonly="true" class="input-sm form-control"></textarea>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>Case Id</th>
+                            <th>Audio</th>
+                            <th>CustName</th>
+                            <th>CSR</th>
+                            <th>Play</th>
+                            <th>Link</th>
+                        </tr>
+                            <tr>
+                                <td>45</td>
+                                <td>jSmith986.mp3</td>
+                                <td>John Smith</td>
+                                <td>Sally Jackson</td>
+                                <td>
+                                    <audio controls="controls" preload="metadata">
+                                        <source src="" type="audio/mp3"></source>
+                                    </audio>
+                                </td>
+                                <td>
+                                    <a href="#">Download</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Case number associated with the file</td>
+                                <td>The name of the audio file</td>
+                                <td>Name of the customer who made the call</td>
+                                <td>Name of the employee who answered the call</td>
+                                <td>Standard audio player with pause, play, seek, and volume</td>
+                                <td>Click on this link to download the audio file</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div ng-hide="hidingAbout" class="ng-hide">
-                    <h1>Description</h1>
-                    <p>This project is a web application that works with voice recognizer software. The software captures customer complaints recorded
+                    <h1 ng-click="showDescription=!showDescription">Description</h1>
+                    <p ng-show="showDescription">This project is a web application that works with voice recognizer software. The software captures customer complaints recorded
                         when the customer gives feedback and response for the customer support executive's call. All of the files can be searched
                         and filtered by using the textbox. The system allowed users to access audio samples by via the page and via download.</p>
-                    <h1>Technologies used:</h1>
-                    <ul>
+                    <h1 ng-click="showTech=!showTech">Technologies used:</h1>
+                    <ul ng-show="showTech">
                         <li>HTML5</li>
                         <li>CSS3</li>
                         <li>JavaScript</li>
@@ -62,7 +106,8 @@
                         <li>AJAX</li>
                         <li>JSON</li>
                     </ul>
-                    <h1>Created by: Stephen Cross</h1>
+                    <h1 ng-click="showCreator=!showCreator">Created by: </h1>
+                    <h4 ng-show="showCreator">Stephen Cross</h4>
                 </div>
                 <div class="table-responsive ng-hide" ng-hide="hidingLog">
                     <table st-table="displayFiles" st-safe-src="safeFiles" class="table-striped">
@@ -94,7 +139,7 @@
                                 </td>
                                 <td>
                                     <a href="#" ng-click=download(row.audio)>Download</a>
-                                </td>                                
+                                </td>
                             </tr>
                         </tbody>
                         <tfoot>
